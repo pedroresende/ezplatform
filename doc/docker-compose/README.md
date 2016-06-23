@@ -13,10 +13,9 @@
 This setup requires Docker Compose 1.7 or higher, and Docker 1.10 or higher. Defaults are set in `.env`, and
 files to ignore are set in `.dockerignore`. By default `.env` specifies that production image is built and setup for use.
 
-#### Concept: Docker Compose "Lego bricks" for eZ Platform
+#### Concept: Docker Compose "Building blocks" for eZ Platform
 
-While currently limited to single server setup, the current docker compose files are made to be mixed and matched togther
-as you'd like. Currently available:
+The current Docker Compose files are made to be mixed and matched togtehr as you'd like. Currently available:
 - prod.yml _(required, always needs to be first, contains: db, web and app container)_
 - dev.yml _(optional, appends config to app)_
 - redis.yml _(optional, adds redis service and appends config to app)_
