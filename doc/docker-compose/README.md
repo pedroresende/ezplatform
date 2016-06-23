@@ -13,6 +13,26 @@
 This setup requires Docker Compose 1.7 or higher, and Docker 1.10 or higher. Defaults are set in `.env`, and
 files to ignore are set in `.dockerignore`. By default `.env` specifies that production image is built and setup for use.
 
+#### Concept: Docker Compose "Lego bricks" for eZ Platform
+
+While currently limited to single server setup, the current docker compose files are made to be mixed and matched togther
+as you'd like. Currently available:
+- prod.yml _(required, always needs to be first, contains: db, web and app container)_
+- dev.yml _(optional, appends config to app)_
+- redis.yml _(optional, adds redis service and appends config to app)_
+- blackfire.yml _(optional, adds blackfire service and lets you trigger profiling against the setup)_
+- selenium.yml _(optional, always needs to be last, adds selenium service and appends config to app)_
+
+
+These can be used with `-f` argument on docker-compose, like:
+```bash
+docker-compose -f doc/docker-compose/prod.yml -f doc/docker-compose/dev.yml up -d --force-recreate
+```
+
+However below environment variable `COMPOSE_FILE` is used instead since this is also what is used to have a default in
+`.env` file at root of the project.
+
+
 #### Before you begin: Install Docker & Docker-Compose
 
 Before jumping into steps below, make sure you have recent versions of [Docker & Docker-Compose](https://www.docker.com/)
